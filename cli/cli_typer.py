@@ -6,22 +6,19 @@ The file responsible for all CLI commands using typer
 # Import Statements
 import typer
 
+#from import statements
+from installation.directory_install import start_directory_installation
+from output.my_output import display_installation
+
 app = typer.Typer()
 
 @app.command()
-def hello(name: str):
+def install():
     """
-    Hello Command - Displays a welcome message to user
+    Install Command - Installs all files necessary to run code clinics
     """
-    print(f"Hello {name}, welcome to Code Clinics")
-
-
-@app.command()
-def hello_world():
-    """
-    Hello World Command - Displays a welcome message to the world
-    """
-    print("Hello world, welcome to Code Clinics")
+    installation_details = {}
+    start_directory_installation(installation_details)
 
 
 def start_typer():
