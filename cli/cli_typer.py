@@ -8,7 +8,6 @@ import typer
 
 #from import statements
 from installation.directory_install import start_directory_installation
-from output.my_output import display_installation
 
 app = typer.Typer()
 

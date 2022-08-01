@@ -1,7 +1,10 @@
+"""Module responsible for all output"""
+
 from rich.console import Console
 from rich.table import Table
 
-def display_installation(output: dict):
+def display_basic_table(output: dict):
+    """Displays basic table based on dictionary received"""
     console = Console()
     table = Table(show_footer=False)
 

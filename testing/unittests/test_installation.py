@@ -25,7 +25,7 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(exists(storage_directory))
         system(f"rm -rf {storage_directory}")
 
-    
+
     @patch("sys.stdout", StringIO())
     def test_get_home_dir(self):
         """Tests get home directory of device"""
@@ -46,7 +46,7 @@ class MyTestCase(unittest.TestCase):
         """Tests that path exist"""
         self.assertEqual(True, file_path_helper.path_exists("testing/unittests/"))
 
-    
+
     @patch("sys.stdout", StringIO())
     def test_invalid_path_exists(self):
         """Tests that path does not exist"""
@@ -58,4 +58,4 @@ class MyTestCase(unittest.TestCase):
         """Tests creating directory"""
         file_path_helper.create_directory("fisher/")
         self.assertTrue(exists("fisher/"))
-        system(f"rm -rf fisher/")
+        system("rm -rf fisher/")

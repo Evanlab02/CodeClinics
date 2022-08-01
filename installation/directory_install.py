@@ -1,9 +1,9 @@
 """Contains all logic for creating the storage directory"""
 
-from output.my_output import display_installation
-from installation.file_path_helper import (get_home_directory, 
-    get_storage_directory, 
-    path_exists, 
+from output.my_output import display_basic_table
+from installation.file_path_helper import (get_home_directory,
+    get_storage_directory,
+    path_exists,
     create_directory)
 
 def start_directory_installation(installation_details: dict):
@@ -28,5 +28,5 @@ def start_directory_installation(installation_details: dict):
         ["Installed Directory", str(installation_details["INSTALLED"])]
     ]
 
-    display_installation(output)
+    display_basic_table(output)
     

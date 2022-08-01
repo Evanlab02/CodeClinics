@@ -5,10 +5,10 @@ setup: requirements.txt
 	@pip install -r requirements.txt
 
 test:
-	@python -m unittest discover -s .\testing\unittests\ -p "test_*.py"
+	@python -m unittest discover -s testing/unittests/ -p "test_*.py"
 
 coverage:
-	@coverage run -m unittest discover -s .\testing\unittests\ -p "test_*.py"
+	@coverage run -m unittest discover -s testing/unittests/ -p "test_*.py"
 	@coverage report
 
 update-dependencies:
