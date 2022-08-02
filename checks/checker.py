@@ -7,8 +7,8 @@ def run_checks(program_details: dict):
     program_details.update({"CREDENTIALS EXIST": does_credentials_exist(program_details)})
 
     failed_checks = [
-        program_details.get(key) 
-        for key in program_details 
+        program_details.get(key)
+        for key in program_details
         if program_details.get(key) is False and
         key != "INSTALLED" and
         key != "EXISTS"

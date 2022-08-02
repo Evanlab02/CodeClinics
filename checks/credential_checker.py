@@ -5,7 +5,7 @@ from installation.file_path_helper import path_exists
 from output.my_output import neat_print
 
 def does_credentials_exist(program_details: dict):
-    """Checks that the credentials file exists at the program 
+    """Checks that the credentials file exists at the program
     storage directory"""
     storage_directory = program_details["STORAGE DIRECTORY"]
     file_name = "credentials.json"
