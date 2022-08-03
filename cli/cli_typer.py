@@ -8,6 +8,8 @@ import typer
 
 #from import statements
 from installation.directory_install import start_directory_installation
+from checks.checker import run_checks
+from output.my_output import neat_print
 
 app = typer.Typer()
 
@@ -16,8 +18,10 @@ def install():
     """
     Install Command - Installs all files necessary to run code clinics
     """
-    installation_details = {}
-    start_directory_installation(installation_details)
+    check_and_installation_resources = {}
+    start_directory_installation(check_and_installation_resources)
+    if False in run_checks(check_and_installation_resources):
+        neat_print("[red]Installation Failed[/red]")
 
 
 def start_typer():

@@ -2,6 +2,7 @@
 
 from rich.console import Console
 from rich.table import Table
+from rich import print as rprint
 
 def display_basic_table(output: dict):
     """Displays basic table based on dictionary received"""
@@ -19,3 +20,8 @@ def display_basic_table(output: dict):
         table.add_row(*row)
 
     console.print(table)
+
+
+def neat_print(message: str):
+    """Prints message using rich print to add extra formatting when required"""
+    rprint(message)
