@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pyinstaller = "*"
+typer = {extras = ["all"], version = "*"}
+pylint = "*"
 
 [dev-packages]
 
