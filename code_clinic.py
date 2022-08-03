@@ -7,7 +7,6 @@ sys.argv and then send it to be processed.
 # From Import Statements
 from cli.cli_typer import start_typer
 
-
 def main():
     """Main function of the code_clinic program"""
     start_typer()
