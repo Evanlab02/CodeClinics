@@ -7,6 +7,9 @@ from output.my_output import neat_print
 def does_credentials_exist(program_details: dict):
     """Checks that the credentials file exists at the program
     storage directory"""
+    input_message = "Please paste the credentials file into the storage "+\
+        "directory and press enter to continue..."
+
     storage_directory = program_details["STORAGE DIRECTORY"]
     file_name = "credentials.json"
     file_path = f"{storage_directory}{file_name}"
@@ -14,5 +17,7 @@ def does_credentials_exist(program_details: dict):
 
     if not file_exists:
         neat_print("[red]Credentials file not found[/red]")
+        input(input_message)
+        file_exists = path_exists(file_path)
 
     return file_exists
