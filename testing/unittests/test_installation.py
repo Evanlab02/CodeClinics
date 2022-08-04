@@ -10,20 +10,12 @@ from os import system
 from os.path import expanduser, exists
 from unittest.mock import patch
 from io import StringIO
-from installation import directory_install, file_path_helper
+from installation import file_path_helper
 
 class MyTestCase(unittest.TestCase):
     """
     Just a class to contain tests
     """
-    @patch("sys.stdout", StringIO())
-    def test_directory_install(self):
-        """Testing directory installation"""
-        directory_install.start_directory_installation({})
-        home_directory = expanduser("~")
-        storage_directory = f"{home_directory}/.code_clinic/"
-        self.assertTrue(exists(storage_directory))
-        system(f"rm -rf {storage_directory}")
 
 
     @patch("sys.stdout", StringIO())
