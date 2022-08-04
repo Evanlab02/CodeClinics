@@ -12,6 +12,9 @@ app = typer.Typer()
 
 @app.command()
 def install():
+    """
+    Install Command - Installs all files necessary to run code clinics
+    """
     do_install()
 
 

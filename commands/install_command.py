@@ -1,10 +1,14 @@
+"""
+Install command - Installs all files necessary to run code clinics
+"""
+
 import sys
 
 #from import statements
 from installation.directory_install import start_directory_installation
 from installation.settings_install import install_settings
 from installation.receive_settings import receive_settings_from_user
-from json_helper.json_helper import load_json_file, overwrite_json_file
+from json_files.json_helper import load_json_file, overwrite_json_file
 from checks.checker import run_checks
 from output.my_output import neat_print
 

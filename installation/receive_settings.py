@@ -1,3 +1,7 @@
+"""
+Receive settings - Receives settings from user
+"""
+
 def receive_settings_from_user():
     """
     Receives settings from user
