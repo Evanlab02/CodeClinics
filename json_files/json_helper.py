@@ -21,7 +21,8 @@ def overwrite_json_file(file_path:str, new_value):
     """
     Overwrites a json file with the new value.
     """
-    if new_value.isinstance(dict) and new_value.isinstance(list):
+
+    if not isinstance(new_value, dict) and not isinstance(new_value, list):
         raise TypeError("new_value must be a dictionary or list")
 
     try:
