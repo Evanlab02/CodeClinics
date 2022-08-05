@@ -8,6 +8,9 @@ pyinstaller = "*"
 typer = {extras = ["all"], version = "*"}
 pylint = "*"
 coverage = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
 
 [dev-packages]
 

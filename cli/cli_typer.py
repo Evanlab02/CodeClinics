@@ -8,6 +8,9 @@ import typer
 
 from checks.checker import do_checks
 from commands.install_command import do_install
+from commands.login_command import do_login
+from output.my_output import neat_print
+from json_files.json_helper import load_json_file
 
 app = typer.Typer()
 
@@ -25,6 +28,18 @@ def checks():
     Checks Command - Checks all files necessary to run code clinics
     """
     do_checks()
+
+
+@app.command()
+def login():
+    """
+    Login Command - Logs into the code clinic
+    """
+    storage_path = do_checks()
+    neat_print("[magenta]Loading settings...[/magenta]")
+    settings = load_json_file(f"{storage_path}settings.json")
+    neat_print("[green]Loaded settings[/green]")
+    do_login(settings)
 
 
 def start_typer():

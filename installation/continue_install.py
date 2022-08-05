@@ -13,6 +13,7 @@ def continue_install(storage_path: str):
     settings_json = {}
     settings_json["STORAGE PATH"] = storage_path
     settings_json["CALENDAR ID"] = get_calendar_id()
+    settings_json["PERMISSIONS"] = ['https://www.googleapis.com/auth/calendar']
     display_all_selected_settings(settings_json)
     install_settings(settings_json)
 
