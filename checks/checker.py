@@ -1,6 +1,4 @@
 """Houses all logic to check that all installation checks pass"""
-
-from operator import ne
 import sys
 
 from time import sleep
@@ -50,7 +48,7 @@ def do_checks():
     output += "[bold cyan]-------------------------------------[/bold cyan]\n"
     neat_print(output)
     sleep(1)
-    
+
     neat_print("[magenta]Getting Storage Path...[/magenta]")
     sleep(1)
     storage_path = get_storage_directory(get_home_directory())
@@ -58,7 +56,6 @@ def do_checks():
     system("clear")
     neat_print(output)
 
-    
     neat_print("[magenta]Looking For Settings File...[/magenta]")
     sleep(1)
     try:
@@ -67,12 +64,12 @@ def do_checks():
         system("clear")
         neat_print(output)
     except FileNotFoundError:
-        output += f"[magenta]Settings file exists: [/magenta][bold red]No[/bold red]\n"
-        output += f"[red]Please reinstall the program[/red]\n"
+        output += "[magenta]Settings file exists: [/magenta][bold red]No[/bold red]\n"
+        output += "[red]Please reinstall the program[/red]\n"
         system("clear")
         neat_print(output)
         sys.exit(1)
-    
+
     neat_print("[magenta]Looking For Credentials File...[/magenta]")
     sleep(1)
     if path_exists(f"{storage_path}credentials.json"):
@@ -80,22 +77,21 @@ def do_checks():
         system("clear")
         neat_print(output)
     else:
-        output += f"[magenta]Credentials file exists: [/magenta][/bold red]No[/bold red]\n"
+        output += "[magenta]Credentials file exists: [/magenta][/bold red]No[/bold red]\n"
         system("clear")
         neat_print(output)
-    
+
     neat_print("[magenta]Reading Settings File...[/magenta]")
     sleep(1)
     setting_checks = {
         "STORAGE PATH": "NO",
         "CALENDAR ID": "NO"}
-    
-    for key in settings_file.keys():
-        if key in setting_checks.keys():
+
+    for key in settings_file:
+        if key in setting_checks:
             setting_checks[key] = "YES"
 
-    for key in setting_checks.keys():
-        value = setting_checks[key]
+    for key, value in setting_checks.items():
         if value == "YES":
             output += f"[magenta]{key} IS SET: [/magenta][bold green]Yes[/bold green]\n"
         else:
