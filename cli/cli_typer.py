@@ -9,6 +9,7 @@ import typer
 from checks.checker import do_checks
 from commands.install_command import do_install
 from commands.login_command import do_login
+from installation.describe_install import describe_install
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file
 
@@ -40,6 +41,16 @@ def login():
     settings = load_json_file(f"{storage_path}settings.json")
     neat_print("[green]Loaded settings[/green]")
     do_login(settings)
+
+
+@app.command()
+def setup():
+    """
+    Setup Command - Sets up the code clinic
+    """
+    neat_print("[magenta]Setting up code clinic...[/magenta]")
+    describe_install()
+    neat_print("[green]Setup complete![/green]")
 
 
 def start_typer():
