@@ -9,6 +9,7 @@ import typer
 from checks.checker import do_checks
 from commands.install_command import do_install
 from commands.login_command import do_login
+from commands.logout_command import do_logout
 from installation.describe_install import describe_install
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file
@@ -41,6 +42,18 @@ def login():
     settings = load_json_file(f"{storage_path}settings.json")
     neat_print("[green]Loaded settings[/green]")
     do_login(settings)
+
+
+@app.command()
+def logout():
+    """
+    Logout Command - Logs out of the code clinic
+    """
+    storage_path = do_checks()
+    neat_print("[magenta]Loading settings...[/magenta]")
+    settings = load_json_file(f"{storage_path}settings.json")
+    neat_print("[green]Loaded settings[/green]")
+    do_logout(settings)
 
 
 @app.command()
