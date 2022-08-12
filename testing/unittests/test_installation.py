@@ -11,8 +11,8 @@ from os.path import expanduser, exists
 from unittest.mock import patch
 from io import StringIO
 from installation import (
-    file_path_helper, 
-    calendar_id, 
+    file_path_helper,
+    calendar_id,
     continue_install,
     describe_install)
 
@@ -67,7 +67,8 @@ class MyTestCase(unittest.TestCase):
     def test_load_settings(self):
         """Tests loading settings"""
         expected = {"SETTINGS": "THIS IS A TEST"}
-        self.assertEqual(expected, continue_install.load_settings_on_disk("testing/unittests/resources/settings.json"))
+        self.assertEqual(expected, continue_install.\
+            load_settings_on_disk("testing/unittests/resources/settings.json"))
 
 
     @patch("sys.stdout", StringIO())
@@ -75,7 +76,8 @@ class MyTestCase(unittest.TestCase):
         """Tests loading settings"""
         try:
             expected = {"SETTINGS": "THIS IS A TEST"}
-            self.assertEqual(expected, continue_install.load_settings_on_disk("testing/unittests/settings.json"))
+            self.assertEqual(expected, continue_install.\
+                load_settings_on_disk("testing/unittests/settings.json"))
         except FileNotFoundError:
             print("TEST PASSED")
 

@@ -21,7 +21,8 @@ class MyTestCase(unittest.TestCase):
         expected = {}
         data = load_json_file("testing/unittests/resources/read_write.json")
         self.assertEqual(expected, data)
-        overwrite_json_file("testing/unittests/resources/read_write.json", {"This is a test": "This is a test"})
+        overwrite_json_file("testing/unittests/resources/read_write.json",\
+        {"This is a test": "This is a test"})
         data = load_json_file("testing/unittests/resources/read_write.json")
         self.assertEqual({"This is a test": "This is a test"}, data)
         overwrite_json_file("testing/unittests/resources/read_write.json", {})

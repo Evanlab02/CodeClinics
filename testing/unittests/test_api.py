@@ -21,9 +21,9 @@ class MyTestCase(unittest.TestCase):
     def test_token_removal(self):
         """Tests token removal"""
         storage_directory = "testing/unittests/resources/"
-        
+
         self.assertTrue(exists(f"{storage_directory}token.json"))
-        
+
         removed_token = token.remove_token(storage_directory)
         self.assertTrue(removed_token)
         self.assertFalse(exists(f"{storage_directory}token.json"))
