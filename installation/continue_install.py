@@ -2,8 +2,10 @@
 Houses all logic for the second part of
 the installation process
 """
-
 from os import system
+
+import inquirer
+
 from installation.calendar_id import get_calendar_id
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file, overwrite_json_file
@@ -14,8 +16,29 @@ def continue_install(storage_path: str):
     settings_json["STORAGE PATH"] = storage_path
     settings_json["CALENDAR ID"] = get_calendar_id()
     settings_json["PERMISSIONS"] = ['https://www.googleapis.com/auth/calendar']
+    settings_json["DATA SAVING FORMAT"] =  get_data_saving_format()
     display_all_selected_settings(settings_json)
     install_settings(settings_json)
+
+
+def get_data_saving_format():
+    """Gets the data saving format"""
+    neat_print("[bold green]Select Data Saving Format[/bold green]")
+    neat_print("[bold green]-------------------------------------[/bold green]")
+    questions = [
+    inquirer.List(
+        "data format",
+        message="What data format would you like to use for saving data (JSON = Default)?",
+        choices=["JSON"],
+        carousel=True),
+    ]
+    answer = inquirer.prompt(questions)["data format"]
+    neat_print(f"[bold green]Selected Data Saving Format {answer}[/bold green]")
+    neat_print("[bold green]-------------------------------------[/bold green]")
+    neat_print("[bold green]PRESS ENTER TO CONTINUE[/bold green]")
+    input()
+    system("clear")
+    return answer
 
 
 def install_settings(settings_json: dict):
@@ -52,6 +75,8 @@ def display_all_selected_settings(settings_json: dict):
     neat_print(f"[cyan]STORAGE PATH: [/cyan][magenta]{storage_path}[/magenta]")
     calendar_id = settings_json.get("CALENDAR ID")
     neat_print(f"[cyan]CALENDAR ID: [/cyan][magenta]{calendar_id}[/magenta]")
+    data_saving_format = settings_json.get("DATA SAVING FORMAT")
+    neat_print(f"[cyan]DATA SAVING FORMAT: [/cyan][magenta]{data_saving_format}[/magenta]")
     neat_print("[bold green]-------------------------------------[/bold green]")
     neat_print("[bold green]PRESS ENTER TO CONTINUE[/bold green]")
     input()
