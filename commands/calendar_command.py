@@ -65,6 +65,9 @@ def get_connection(creds):
 
 
 def get_dates():
+    """
+    Gets the starting and ending dates of the next 7 days
+    """
     neat_print("Retrieving start and end date...")
     today, seven_days = get_start_and_end_date(datetime.now())
     neat_print(f"[cyan]START DATE[/cyan] = [magenta]{today}[/magenta]")
@@ -79,11 +82,11 @@ def download_and_save_events(calendar_settings: dict):
     neat_print("[magenta]Downloading events...[/magenta]")
     events = download_events(
         calendar_settings["dates"],
-        calendar_settings["connection"], 
+        calendar_settings["connection"],
         calendar_settings["calendar id"]
     )
     neat_print("[green]Events downloaded![/green]")
-    
+
     neat_print("[magenta]Saving events...[/magenta]")
     calendar_settings.update({"events": events})
     save_events(calendar_settings)
@@ -91,6 +94,9 @@ def download_and_save_events(calendar_settings: dict):
 
 
 def save_events(calendar_settings: dict):
+    """
+    Saves the events on the disk in settings.json file
+    """
     storage_path = calendar_settings['storage path']
     memory_events = calendar_settings['events']
 
@@ -127,7 +133,7 @@ def do_calendar(settings: dict):
         'credentials': creds,
         'connection': connection,
         'dates': dates
-    } 
+    }
 
     events = download_and_save_events(calendar_settings)
     neat_print(events)

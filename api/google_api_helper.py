@@ -1,3 +1,7 @@
+"""
+Houses all the functions for the Google API
+"""
+
 import sys
 
 from datetime import datetime, timezone, timedelta
@@ -34,4 +38,3 @@ def download_events(dates:tuple, connection, calendar_id: str):
 
     events = seven_day_calendar.get('items', [])
     return events
-

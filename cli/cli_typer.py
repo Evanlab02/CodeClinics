@@ -10,10 +10,10 @@ from checks.checker import do_checks
 from commands.install_command import do_install
 from commands.login_command import do_login
 from commands.logout_command import do_logout
+from commands.calendar_command import do_calendar
 from installation.describe_install import describe_install
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file
-from commands.calendar_command import do_calendar
 
 app = typer.Typer()
 

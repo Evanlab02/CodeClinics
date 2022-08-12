@@ -2,9 +2,10 @@
 Houses all logic for the second part of
 the installation process
 """
+from os import system
+
 import inquirer
 
-from os import system
 from installation.calendar_id import get_calendar_id
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file, overwrite_json_file
@@ -26,9 +27,9 @@ def get_data_saving_format():
     neat_print("[bold green]-------------------------------------[/bold green]")
     questions = [
     inquirer.List(
-        "data format", 
-        message="What data format would you like to use for saving data (JSON = Default)?", 
-        choices=["JSON"], 
+        "data format",
+        message="What data format would you like to use for saving data (JSON = Default)?",
+        choices=["JSON"],
         carousel=True),
     ]
     answer = inquirer.prompt(questions)["data format"]
