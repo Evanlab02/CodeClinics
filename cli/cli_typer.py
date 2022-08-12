@@ -13,6 +13,7 @@ from commands.logout_command import do_logout
 from installation.describe_install import describe_install
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file
+from commands.calendar_command import do_calendar
 
 app = typer.Typer()
 
@@ -22,6 +23,16 @@ def install():
     Install Command - Installs all files necessary to run code clinics
     """
     do_install()
+
+
+@app.command()
+def setup():
+    """
+    Setup Command - Sets up the code clinic
+    """
+    neat_print("[magenta]Setting up code clinic...[/magenta]")
+    describe_install()
+    neat_print("[green]Setup complete![/green]")
 
 
 @app.command()
@@ -57,13 +68,15 @@ def logout():
 
 
 @app.command()
-def setup():
+def calendar():
     """
-    Setup Command - Sets up the code clinic
+    Calendar Command - Downloads, saves and displays events on calendars
     """
-    neat_print("[magenta]Setting up code clinic...[/magenta]")
-    describe_install()
-    neat_print("[green]Setup complete![/green]")
+    storage_path = do_checks()
+    neat_print("[magenta]Loading settings...[/magenta]")
+    settings = load_json_file(f"{storage_path}settings.json")
+    neat_print("[green]Loaded settings[/green]")
+    do_calendar(settings)
 
 
 def start_typer():

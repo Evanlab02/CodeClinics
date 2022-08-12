@@ -20,6 +20,10 @@ coverage:
 	@coverage run -m unittest discover -s testing/unittests/ -p "test_*.py"
 	@coverage report
 
+build-install: test
+	@make build
+	@sudo cp dist/code_clinic /usr/local/bin/
+
 update-dependencies:
 	@pipenv update
 	@pipenv requirements > requirements.txt
