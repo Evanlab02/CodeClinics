@@ -3,6 +3,8 @@ CLI Typer
 The file responsible for all CLI commands using typer
 """
 
+from os import system
+
 # Import Statements
 import typer
 
@@ -73,9 +75,8 @@ def calendar():
     Calendar Command - Downloads, saves and displays events on calendars
     """
     storage_path = do_checks()
-    neat_print("[magenta]Loading settings...[/magenta]")
+    system("clear")
     settings = load_json_file(f"{storage_path}settings.json")
-    neat_print("[green]Loaded settings[/green]")
     do_calendar(settings)
 
 

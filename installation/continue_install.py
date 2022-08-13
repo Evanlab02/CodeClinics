@@ -29,7 +29,7 @@ def get_data_saving_format():
     inquirer.List(
         "data format",
         message="What data format would you like to use for saving data (JSON = Default)?",
-        choices=["JSON"],
+        choices=["JSON", "CSV"],
         carousel=True),
     ]
     answer = inquirer.prompt(questions)["data format"]
