@@ -21,6 +21,8 @@ class MyTestCase(unittest.TestCase):
         mock_now = datetime(2022, 8, 13, 14, 23, 18, 140878)
         dates = calendar_command.get_dates(mock_now)
         start_date_time = str(dates[0])
-        self.assertEqual(start_date_time, "2022-08-13T14:23:18.140878+02:00")
+        start_date_time = start_date_time.split("+", maxsplit=1)[0]
+        self.assertEqual(start_date_time, "2022-08-13T14:23:18.140878")
         end_date_time = str(dates[1])
-        self.assertEqual(end_date_time, "2022-08-20T14:23:18.140878+02:00")
+        end_date_time = end_date_time.split("+", maxsplit=1)[0]
+        self.assertEqual(end_date_time, "2022-08-20T14:23:18.140878")
