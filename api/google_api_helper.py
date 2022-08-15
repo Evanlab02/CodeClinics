@@ -4,13 +4,13 @@ Houses all the functions for the Google API
 
 import sys
 
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 def get_start_and_end_date(now: datetime):
     """Gets today and 7 days later date and returns it in isoformat"""
-    today = now.now(timezone.utc).astimezone()
+    today = now.astimezone()
     seven_days = today+timedelta(7)
     today = today.isoformat()
     seven_days = seven_days.isoformat()
