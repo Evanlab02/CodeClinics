@@ -148,8 +148,8 @@ def do_calendar(settings: dict):
     }
 
     calendar_settings = download_all_events(calendar_settings)
-    
-    all_events = [event for event in calendar_settings['events']]
+
+    all_events = list(calendar_settings['events'])
 
     calendar_settings["calendar id"] = "primary"
     calendar_settings = download_all_events(calendar_settings)
