@@ -33,7 +33,7 @@ def get_dates(now: datetime):
     return today, seven_days
 
 
-def download_and_save_events(calendar_settings: dict):
+def download_all_events(calendar_settings: dict):
     """
     Downloads and saves the events of the next 7 days using the Google Calendar API.
     """
@@ -44,11 +44,8 @@ def download_and_save_events(calendar_settings: dict):
         calendar_settings["calendar id"]
     )
     neat_print("[green]Events downloaded![/green]")
-
-    neat_print("[magenta]Saving events...[/magenta]")
     calendar_settings.update({"events": events})
-    save_events(calendar_settings)
-    return events
+    return calendar_settings
 
 
 def save_json_events(calendar_settings: dict):
@@ -120,6 +117,7 @@ def save_events(calendar_settings: dict):
     """
     Saves the events on the disk
     """
+    neat_print("[magenta]Saving events...[/magenta]")
     data_saving_format = calendar_settings['data saving format']
     save_json_events(calendar_settings)
 
@@ -149,9 +147,20 @@ def do_calendar(settings: dict):
         'data saving format': data_saving_format
     }
 
-    events = download_and_save_events(calendar_settings)
+    calendar_settings = download_all_events(calendar_settings)
+
+    all_events = list(calendar_settings['events'])
+
+    calendar_settings["calendar id"] = "primary"
+    calendar_settings = download_all_events(calendar_settings)
+
+    for event in calendar_settings['events']:
+        all_events.append(event)
+
+    calendar_settings["events"] = all_events
+    save_events(calendar_settings)
 
     if data_display_format == 'JSON':
-        neat_print(events)
+        neat_print(all_events)
     else:
         neat_print("[yellow]NO OUTPUT[/yellow]")
