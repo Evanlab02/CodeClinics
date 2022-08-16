@@ -138,6 +138,7 @@ def do_calendar(settings: dict):
     connection = create_api_connection(creds)
     dates = get_dates(datetime.now())
     data_saving_format = settings['DATA SAVING FORMAT']
+    data_display_format = settings['DATA DISPLAY FORMAT']
 
     calendar_settings = {
         'storage path': storage_path,
@@ -149,4 +150,8 @@ def do_calendar(settings: dict):
     }
 
     events = download_and_save_events(calendar_settings)
-    neat_print(events)
+
+    if data_display_format == 'JSON':
+        neat_print(events)
+    else:
+        neat_print("[yellow]NO OUTPUT[/yellow]")

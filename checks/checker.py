@@ -85,7 +85,10 @@ def do_checks():
     setting_checks = {
         "STORAGE PATH": "NO",
         "CALENDAR ID": "NO",
-        "PERMISSIONS": "NO"}
+        "PERMISSIONS": "NO",
+        "DATA SAVING FORMAT": "NO",
+        "DATA DISPLAY FORMAT": "NO",
+    }
 
     for key in settings_file:
         if key in setting_checks:
