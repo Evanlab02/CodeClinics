@@ -17,8 +17,30 @@ def continue_install(storage_path: str):
     settings_json["CALENDAR ID"] = get_calendar_id()
     settings_json["PERMISSIONS"] = ['https://www.googleapis.com/auth/calendar']
     settings_json["DATA SAVING FORMAT"] =  get_data_saving_format()
+    settings_json["DATA DISPLAY FORMAT"] = get_data_display_format()
     display_all_selected_settings(settings_json)
     install_settings(settings_json)
+
+
+def get_data_display_format():
+    """
+    Gets the data displaying format from the user
+    """
+    neat_print("[bold green]Select Data Display Format[/bold green]")
+    neat_print("[bold green]-------------------------------------[/bold green]")
+    questions = [
+        inquirer.List('data display format',
+            message="What data format would you like to use for display data (Rich = Default)?",
+            choices=['Rich', 'JSON'],
+            carousel=True,),
+    ]
+    answer = inquirer.prompt(questions)["data display format"]
+    neat_print(f"[bold green]Selected Data Display Format {answer}[/bold green]")
+    neat_print("[bold green]-------------------------------------[/bold green]")
+    neat_print("[bold green]PRESS ENTER TO CONTINUE[/bold green]")
+    input()
+    system("clear")
+    return answer
 
 
 def get_data_saving_format():
@@ -26,11 +48,11 @@ def get_data_saving_format():
     neat_print("[bold green]Select Data Saving Format[/bold green]")
     neat_print("[bold green]-------------------------------------[/bold green]")
     questions = [
-    inquirer.List(
-        "data format",
-        message="What data format would you like to use for saving data (JSON = Default)?",
-        choices=["JSON", "CSV"],
-        carousel=True),
+        inquirer.List(
+            "data format",
+            message="What data format would you like to use for saving data (JSON = Default)?",
+            choices=["JSON", "CSV"],
+            carousel=True),
     ]
     answer = inquirer.prompt(questions)["data format"]
     neat_print(f"[bold green]Selected Data Saving Format {answer}[/bold green]")
@@ -77,6 +99,8 @@ def display_all_selected_settings(settings_json: dict):
     neat_print(f"[cyan]CALENDAR ID: [/cyan][magenta]{calendar_id}[/magenta]")
     data_saving_format = settings_json.get("DATA SAVING FORMAT")
     neat_print(f"[cyan]DATA SAVING FORMAT: [/cyan][magenta]{data_saving_format}[/magenta]")
+    data_display_format = settings_json.get("DATA DISPLAY FORMAT")
+    neat_print(f"[cyan]DATA DISPLAY FORMAT: [/cyan][magenta]{data_display_format}[/magenta]")
     neat_print("[bold green]-------------------------------------[/bold green]")
     neat_print("[bold green]PRESS ENTER TO CONTINUE[/bold green]")
     input()
