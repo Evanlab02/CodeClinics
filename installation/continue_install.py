@@ -31,7 +31,7 @@ def get_data_display_format():
     questions = [
         inquirer.List('data display format',
             message="What data format would you like to use for display data (Rich = Default)?",
-            choices=['Rich', 'CSV', 'JSON'],
+            choices=['Rich', 'CSV', 'Tabulate', 'JSON'],
             carousel=True,),
     ]
     answer = inquirer.prompt(questions)["data display format"]

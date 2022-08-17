@@ -1,7 +1,7 @@
 """
 Houses all logic in regards to the token.json file
 """
-
+import sys
 from os import system
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
@@ -71,3 +71,13 @@ def remove_token(storage_directory: str):
         system(f"rm {storage_directory}token.json")
         token_exists = True
     return token_exists
+
+
+def validate_token(creds):
+    """
+    Validates the token.
+    """
+    token = check_token(creds)
+    if not token:
+        neat_print("[yellow]Please login using code_clinic login[/yellow]")
+        sys.exit(1)
