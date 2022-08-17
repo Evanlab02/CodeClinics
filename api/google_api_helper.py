@@ -30,11 +30,12 @@ def create_api_connection(creds):
 
 def download_events(dates:tuple, connection, calendar_id: str):
     """Download events into memory from the api"""
-    seven_day_calendar = connection.events().list(calendarId=calendar_id,
-                                            timeMin = dates[0],
-                                            timeMax = dates[1],
-                                            singleEvents=True,
-                                            orderBy='startTime').execute()
+    seven_day_calendar = connection.events().list(
+        calendarId=calendar_id,
+        timeMin = dates[0],
+        timeMax = dates[1],
+        singleEvents=True,
+        orderBy='startTime').execute()
 
     events = seven_day_calendar.get('items', [])
     return events
