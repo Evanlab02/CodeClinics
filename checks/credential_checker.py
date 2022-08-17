@@ -2,7 +2,7 @@
 Houses all logic to check that the credentials file does exist
 """
 from installation.file_path_helper import path_exists
-from output.my_output import neat_print
+from output.rich_output import neat_print
 
 def does_credentials_exist(program_details: dict):
     """Checks that the credentials file exists at the program

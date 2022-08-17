@@ -10,7 +10,7 @@ from os import system
 from os.path import exists
 from unittest.mock import patch
 from io import StringIO
-from api import token
+from google_calendar_API import token_helper as token
 
 class MyTestCase(unittest.TestCase):
     """

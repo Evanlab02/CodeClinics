@@ -1,7 +1,7 @@
 """Contains all the logic for installing the settings file"""
 
 from installation.file_path_helper import path_exists
-from output.my_output import neat_print
+from output.rich_output import neat_print
 
 def install_settings(installation_resources: dict):
     """Installs the settings file if it does not exist on this device"""

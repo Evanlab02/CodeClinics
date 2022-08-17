@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyinstaller = "*"
 typer = {extras = ["all"], version = "*"}
 pylint = "*"
 coverage = "*"
@@ -13,6 +12,7 @@ google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 inquirer = "*"
 tabulate = "*"
+pyinstaller = "*"
 
 [dev-packages]
 

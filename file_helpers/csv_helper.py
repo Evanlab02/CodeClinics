@@ -3,8 +3,6 @@ Houses all logic for loading and overwriting csv files.
 """
 import csv
 
-from output.my_output import neat_print
-
 def write_csv_file(file_path: str, arrays_of_events: list):
     """
     Writes a csv file with the given arrays of events.
@@ -36,25 +34,6 @@ def read_csv_file(file_path: str):
         "headers": headers,
         "rows": rows
     }
-
-
-def save_csv_events(calendar_settings: dict):
-    """
-    Saves the events on the disk in events.csv file
-    """
-    storage_path = calendar_settings['storage path']
-    memory_events = calendar_settings['events']
-
-    neat_print("[magenta]Converting events to CSV...[/magenta]")
-    csv_list = [["ID","Title","Date","Start Time","End Time","Description","Meets Link"]]
-
-    for event in memory_events:
-        csv_list.append(generate_csv_row(event))
-    neat_print("[green]Converted events to CSV![/green]")
-
-    neat_print("[magenta]Saving events in CSV...[/magenta]")
-    write_csv_file(f"{storage_path}events.csv", csv_list)
-    neat_print("[green]Events saved in CSV![/green]")
 
 
 def generate_csv_row(event: dict):

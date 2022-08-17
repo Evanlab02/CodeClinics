@@ -3,8 +3,8 @@ Houses all logic to logout the user
 """
 
 # From Import Statements
-from output.my_output import neat_print
-from api.token import remove_token
+from output.rich_output import neat_print
+from google_calendar_API.token_helper import remove_token
 
 
 def do_logout(settings: dict):

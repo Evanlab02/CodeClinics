@@ -8,8 +8,8 @@ import sys
 from installation.directory_install import start_directory_installation
 from installation.settings_install import install_settings
 from installation.describe_install import describe_install
-from checks.checker import run_checks
-from output.my_output import neat_print
+from checks.overall_checker import run_first_checks
+from output.rich_output import neat_print
 
 def do_install():
     """
@@ -24,7 +24,7 @@ def do_install():
     settings_file_path = f"{storage_directory}settings.json"
     neat_print(settings_file_path)
 
-    if False in run_checks(check_and_installation_resources):
+    if False in run_first_checks(check_and_installation_resources):
         neat_print("[red]Installation Failed[/red]")
         sys.exit(1)
     else:

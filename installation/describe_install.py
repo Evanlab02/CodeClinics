@@ -6,8 +6,8 @@ for both users and developers.
 
 from os import system
 import sys
-from output.my_output import neat_print
-from checks.checker import get_initial_continued_checks
+from output.rich_output import neat_print
+from checks.overall_checker import run_second_checks
 from installation.file_path_helper import get_home_directory, get_storage_directory
 from installation.continue_install import continue_install
 
@@ -16,7 +16,7 @@ def describe_install():
     clean_up_terminal()
     welcome_message()
     storage_path = get_storage()
-    file_checks = get_initial_continued_checks(storage_path)
+    file_checks = run_second_checks(storage_path)
     files_installed = read_file_checks(file_checks)
 
     if not files_installed:

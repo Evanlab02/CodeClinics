@@ -1,4 +1,4 @@
-build:
+build: test
 	@python -m PyInstaller --onefile code_clinic.py
 
 clean:
