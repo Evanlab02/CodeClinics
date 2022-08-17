@@ -10,7 +10,7 @@ from api.google_api_helper import get_start_and_end_date, create_api_connection,
 from api.token import load_token, check_token
 from output.my_output import neat_print
 from json_files.json_helper import load_json_file, overwrite_json_file
-from csv_files.csv_helper import write_csv_file
+from csv_files.csv_helper import write_csv_file, read_csv_file
 
 def validate_token(creds):
     """
@@ -26,10 +26,7 @@ def get_dates(now: datetime):
     """
     Gets the starting and ending dates of the next 7 days
     """
-    neat_print(now)
     today, seven_days = get_start_and_end_date(now)
-    neat_print(today)
-    neat_print(seven_days)
     return today, seven_days
 
 
@@ -118,11 +115,32 @@ def save_events(calendar_settings: dict):
     Saves the events on the disk
     """
     neat_print("[magenta]Saving events...[/magenta]")
-    data_saving_format = calendar_settings['data saving format']
     save_json_events(calendar_settings)
+    save_csv_events(calendar_settings)
 
-    if data_saving_format == 'CSV':
-        save_csv_events(calendar_settings)
+
+def display_csv_events(calendar_settings: dict):
+    """
+    Displays the events in the console
+    """
+    storage_path = calendar_settings['storage path']
+    csv_file_events = read_csv_file(f"{storage_path}events.csv")
+    output = ""
+
+    for header in csv_file_events["headers"]:
+        if header == csv_file_events["headers"][-1]:
+            output+=f"{header}\n"
+        else:
+            output+=f"{header},"
+
+    for row in csv_file_events["rows"]:
+        for field in row:
+            if field == row[-1]:
+                output+=f"{field}\n"
+            else:
+                output+=f"{field},"
+
+    neat_print(output)
 
 
 def do_calendar(settings: dict):
@@ -160,7 +178,10 @@ def do_calendar(settings: dict):
     calendar_settings["events"] = all_events
     save_events(calendar_settings)
 
+    neat_print("[green]\n----- ALL Events -----[/green]")
     if data_display_format == 'JSON':
         neat_print(all_events)
+    elif data_display_format == 'CSV':
+        display_csv_events(calendar_settings)
     else:
         neat_print("[yellow]NO OUTPUT[/yellow]")
