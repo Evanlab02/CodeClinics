@@ -3,7 +3,7 @@ Houses all logic to get and validate the calendar ID
 """
 
 from os import system
-from output.my_output import neat_print
+from output.rich_output import neat_print
 
 
 def get_calendar_id():

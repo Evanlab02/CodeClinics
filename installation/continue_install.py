@@ -7,8 +7,8 @@ from os import system
 import inquirer
 
 from installation.calendar_id import get_calendar_id
-from output.my_output import neat_print
-from json_files.json_helper import load_json_file, overwrite_json_file
+from output.rich_output import neat_print
+from file_helpers.json_helper import load_json_file, overwrite_json_file
 
 def continue_install(storage_path: str):
     """"Continues the program installation"""

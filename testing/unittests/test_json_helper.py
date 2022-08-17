@@ -8,7 +8,7 @@ import unittest
 #From Import Statements
 from unittest.mock import patch
 from io import StringIO
-from json_files.json_helper import load_json_file, overwrite_json_file
+from file_helpers.json_helper import load_json_file, overwrite_json_file
 
 class MyTestCase(unittest.TestCase):
     """
