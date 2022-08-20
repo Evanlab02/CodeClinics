@@ -9,12 +9,12 @@ from unittest.mock import patch
 from io import StringIO
 
 #File Helpers
-from file_helpers.json_helper import load_json_file, overwrite_json_file
+from file_helpers.json_helper import load_json_file
 from file_helpers.csv_helper import read_csv_file
 
 
 #Storage
-from storage.calendar_saving import save_events, save_json_events, save_csv_events
+from storage.calendar_saving import save_json_events, save_csv_events
 
 
 class MyTestCase(unittest.TestCase):
@@ -82,7 +82,17 @@ class MyTestCase(unittest.TestCase):
         csv_list = read_csv_file("testing/unittests/resources/events.csv")
         expected_list = {
             "headers": ["ID","Title","Date","Start Time","End Time","Description","Meets Link"],
-            "rows": [["1","Event 1","2022-08-19","13:00:00","14:00:00","This is a tester event","https://meet.google.com/abc"]]
+            "rows": [
+                [
+                    "1",
+                    "Event 1",
+                    "2022-08-19",
+                    "13:00:00",
+                    "14:00:00",
+                    "This is a tester event",
+                    "https://meet.google.com/abc"
+                ]
+            ]
         }
         self.assertEqual(csv_list, expected_list)
         save_csv_events("testing/unittests/resources/", [])
@@ -92,4 +102,3 @@ class MyTestCase(unittest.TestCase):
             "rows": []
         }
         self.assertEqual(csv_list, expected_list)
-
