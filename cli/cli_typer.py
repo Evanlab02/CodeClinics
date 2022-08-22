@@ -76,6 +76,14 @@ def calendar():
     do_calendar(settings)
 
 
+@app.command()
+def volunteer():
+    """
+    Volunteer Command - Adds a volunteer to the code clinic session
+    """
+    ...
+
+
 def start_typer():
     """Starts the app"""
     app()
