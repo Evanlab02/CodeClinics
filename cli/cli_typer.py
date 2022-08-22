@@ -4,6 +4,7 @@ The file responsible for all CLI commands using typer
 """
 
 # Import Statements
+from datetime import datetime
 import typer
 
 from checks.overall_checker import overall_checks
@@ -68,8 +69,10 @@ def calendar():
     """
     Calendar Command - Downloads, saves and displays events on calendars
     """
+    starting_time = datetime.now()
     storage_path = overall_checks()
     settings = load_json_file(f"{storage_path}settings.json")
+    settings["STARTING TIME"] = starting_time
     do_calendar(settings)
 
 

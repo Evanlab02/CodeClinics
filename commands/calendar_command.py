@@ -10,7 +10,7 @@ from google_calendar_API.token_helper import load_token, validate_token
 
 from output.csv_output import display_csv_events
 from output.tabulate_output import display_tabulate_events
-from output.rich_output import neat_print
+from output.rich_output import neat_print, calendar_print
 
 from storage.calendar_saving import save_events
 
@@ -26,6 +26,7 @@ def do_calendar(settings: dict):
     connection = create_api_connection(creds)
     dates = get_dates()
     data_display_format = settings['DATA DISPLAY FORMAT']
+    starting_time = settings['STARTING TIME']
 
     events = download_multi_events(connection, dates, calendar_id)
     save_events(storage_path, events)
@@ -37,4 +38,4 @@ def do_calendar(settings: dict):
     elif data_display_format == 'Tabulate':
         display_tabulate_events(storage_path)
     else:
-        neat_print("[yellow]NO OUTPUT[/yellow]")
+        calendar_print(events, starting_time)
