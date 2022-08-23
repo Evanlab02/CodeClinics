@@ -18,6 +18,7 @@ def do_logout(settings: dict):
     removed_token = remove_token(storage_directory)
 
     settings["USER EMAIL"] = "[NO EMAIL]"
+    settings["USER NAME"] = "[NO DISPLAY NAME]"
 
     if removed_token:
         neat_print("[green]Logged out successfully[/green]")
