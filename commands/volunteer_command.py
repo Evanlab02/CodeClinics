@@ -24,7 +24,6 @@ def do_volunteer(settings: dict):
     Command to volunteer for a shift.
     """
     calendar_id = settings['CALENDAR ID']
-    user_email = settings["USER EMAIL"]
     connection = create_connection(settings)
     events = get_events(connection, calendar_id)
     today_rounded = get_rounded_time(datetime.now())
@@ -40,8 +39,7 @@ def do_volunteer(settings: dict):
         "selected day": selected_day,
         "selected slot": selected_slot,
         "start time": times_for_event[0],
-        "end time": times_for_event[1],
-        "user email": user_email
+        "end time": times_for_event[1]
     }
     create_volunteering_event(connection, event_data)
 

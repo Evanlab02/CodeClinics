@@ -16,9 +16,6 @@ def do_login(settings: dict):
     if check_token(creds):
         neat_print("[green]a User is logged in[/green]")
     else:
-        settings["USER EMAIL"] = input("Enter your email: ")
-        settings["USER NAME"] = input("Enter your full name and surname: ")
         create_token(storage_path, permission)
         neat_print("[green]Logged in![/green]")
-        overwrite_json_file(f"{storage_path}settings.json", settings)
     

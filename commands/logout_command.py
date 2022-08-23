@@ -17,12 +17,7 @@ def do_logout(settings: dict):
     storage_directory = settings["STORAGE PATH"]
     removed_token = remove_token(storage_directory)
 
-    settings["USER EMAIL"] = "[NO EMAIL]"
-    settings["USER NAME"] = "[NO DISPLAY NAME]"
-
     if removed_token:
         neat_print("[green]Logged out successfully[/green]")
     else:
         neat_print("[yellow]No user to logout[/yellow]")
-
-    overwrite_json_file(f"{storage_directory}settings.json", settings)
