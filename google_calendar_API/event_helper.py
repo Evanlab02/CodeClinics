@@ -15,6 +15,7 @@ def create_volunteering_event(connection, event_data: dict):
     selected_slot = event_data["selected slot"]
     start_time = event_data["start time"]
     end_time = event_data["end time"]
+    user_email = event_data["user email"]
 
     try:
         event_result = connection.events().insert(calendarId=calendar_id,
