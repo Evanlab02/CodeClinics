@@ -5,15 +5,21 @@ The file responsible for all CLI commands using typer
 
 # Import Statements
 from datetime import datetime
+
 import typer
 
 from checks.overall_checker import overall_checks
+
 from commands.install_command import do_install
 from commands.login_command import do_login
 from commands.logout_command import do_logout
 from commands.calendar_command import do_calendar
+from commands.volunteer_command import do_volunteer
+
 from installation.describe_install import describe_install
+
 from output.rich_output import neat_print
+
 from file_helpers.json_helper import load_json_file
 
 app = typer.Typer()
@@ -81,7 +87,9 @@ def volunteer():
     """
     Volunteer Command - Adds a volunteer to the code clinic session
     """
-    ...
+    storage_path = overall_checks()
+    settings = load_json_file(f"{storage_path}settings.json")
+    do_volunteer(settings)
 
 
 def start_typer():
