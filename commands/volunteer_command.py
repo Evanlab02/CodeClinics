@@ -29,7 +29,7 @@ def do_volunteer(settings: dict):
     storage_path = settings['STORAGE PATH']
     connection = create_connection(settings)
     events = get_events(connection, calendar_id)
-    
+
     today_rounded = get_rounded_time(datetime.now())
 
     slots_template = generate_slots_template(today_rounded)
