@@ -12,6 +12,8 @@ from commands.command_helper import (
 
 from input_helpers.inquirer_helper import get_selected_event
 
+from google_calendar_API.event_helper import delete_event
+
 def cancel_volunteer_slot(settings: dict):
     """
     Cancel Volunteer Slot - Cancels a volunteer slot
@@ -33,5 +35,4 @@ def cancel_volunteer_slot(settings: dict):
         "What event would you like to cancel?"
     )
     selected_id = selected_event_formatted.split(" - ")[0]
-
-    connection.events().delete(calendarId=calendar_id, eventId=selected_id).execute()
+    delete_event(connection, calendar_id, selected_id)
