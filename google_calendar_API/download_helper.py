@@ -25,11 +25,16 @@ def download_multi_events(connection, dates:tuple, calendar_id: str):
     central_events = download_events(connection, dates, calendar_id)
 
     all_events = []
+    all_ids = []
 
     for event in primary_events:
-        all_events.append(event)
+        if event['id'] not in all_ids:
+            all_events.append(event)
+            all_ids.append(event['id'])
 
     for event in central_events:
-        all_events.append(event)
+        if event['id'] not in all_ids:
+            all_events.append(event)
+            all_ids.append(event['id'])
 
     return all_events

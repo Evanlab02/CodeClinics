@@ -60,3 +60,15 @@ def get_all_events(connection, calendar_id: str):
     dates = get_dates()
     events = download_multi_events(connection, dates, calendar_id)
     return events
+
+
+def filter_events_based_on_email(events: dict, email: str):
+    """
+    Filters the events based on the email.
+    """
+    open_events = []
+    for event in events:
+        for attendee in event['attendees']:
+            if attendee['email'] == email:
+                open_events.append(event)
+    return open_events

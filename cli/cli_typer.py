@@ -16,6 +16,7 @@ from commands.logout_command import do_logout
 from commands.calendar_command import do_calendar
 from commands.volunteer_command import do_volunteer
 from commands.book_command import do_booking
+from commands.cancel_command import cancel_volunteer_slot
 
 from installation.describe_install import describe_install
 
@@ -101,6 +102,22 @@ def book():
     storage_path = overall_checks()
     settings = load_json_file(f"{storage_path}settings.json")
     do_booking(settings)
+
+
+@app.command()
+def cancel(
+    member_type: str = \
+        typer.Option("", help="Type of slot you are cancelling(Volunteering/Student).")
+    ):
+    """
+    Cancel Command - Cancels a code clinic session
+    """
+    storage_path = overall_checks()
+    settings = load_json_file(f"{storage_path}settings.json")
+    if member_type.lower() == "volunteering":
+        cancel_volunteer_slot(settings)
+    else:
+        print("Invalid member type")
 
 
 def start_typer():

@@ -30,7 +30,7 @@ def save_csv_events(storage_path:str, events: list):
     """
     Saves the events on the disk in events.csv file
     """
-    csv_list = [["ID","Title","Date","Start Time","End Time","Description","Meets Link"]]
+    csv_list = [["Title","Date","Start Time","End Time","Description","Meets Link"]]
 
     for event in events:
         csv_list.append(generate_csv_row(event))

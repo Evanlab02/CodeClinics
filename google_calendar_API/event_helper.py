@@ -70,3 +70,15 @@ def attend_event(connection, calendar_id: str, event: dict):
     except HttpError as error:
         neat_print("[bold red]Event Creation Failed[/bold red]")
         neat_print(f"[red]Unexpected Error: {error}[/red]")
+
+
+def delete_event(connection, calendar_id: str, event_id: str):
+    """
+    Deletes an event.
+    """
+    try:
+        connection.events().delete(calendarId=calendar_id, eventId=event_id).execute()
+        neat_print("[green]Deleted Event[/green]")
+    except HttpError as error:
+        neat_print("[bold red]Event Deletion Failed[/bold red]")
+        neat_print(f"[red]Unexpected Error: {error}[/red]")

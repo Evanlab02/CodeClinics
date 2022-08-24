@@ -33,7 +33,7 @@ def get_selected_slot(slots):
     return selected_slot
 
 
-def get_selected_event(events: list):
+def get_selected_event(events: list, message: str = "What event do you wish to book?"):
     """
     Gets the selected event from the user.
     """
@@ -44,7 +44,7 @@ def get_selected_event(events: list):
     event_list = [f"{event['id']} - {event['summary']}" for event in events]
     event_slots = [
     inquirer.List('Events',
-                message="What event do you wish to attend?",
+                message=message,
                 choices=event_list,
             ),
     ]

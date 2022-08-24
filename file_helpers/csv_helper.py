@@ -40,7 +40,6 @@ def generate_csv_row(event: dict):
     """
     Generates a row for the events.csv file
     """
-    event_id = event['id']
     title = event['summary']
     date = event['start']['dateTime'].split("T")[0]
     start_time = event['start']['dateTime'].split("T")[1].split("+")[0]
@@ -56,4 +55,4 @@ def generate_csv_row(event: dict):
     except KeyError:
         hangout_link = "[No Hangout Link]"
 
-    return [event_id,title,date,start_time,end_time,description,hangout_link]
+    return [title,date,start_time,end_time,description,hangout_link]
