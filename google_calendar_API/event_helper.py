@@ -68,4 +68,3 @@ def attend_event(connection, calendar_id: str, event: dict):
     except HttpError as error:
         neat_print("[bold red]Event Creation Failed[/bold red]")
         neat_print(f"[red]Unexpected Error: {error}[/red]")
-
