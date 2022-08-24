@@ -1,3 +1,7 @@
+"""
+Houses functions that are commonly used accross the commands package.
+"""
+
 from google_calendar_API.date_helper import get_dates
 from google_calendar_API.connection_helper import create_api_connection
 from google_calendar_API.download_helper import download_multi_events
@@ -8,9 +12,11 @@ def get_event_specifics(events: list, selected_id: str):
     """
     Gets the specifics of the selected event.
     """
+    event_specifics = {}
     for event in events:
         if event['id'] == selected_id:
-            return event
+            event_specifics = event
+    return event_specifics
 
 
 def create_connection(settings: dict):
