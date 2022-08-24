@@ -92,6 +92,16 @@ def volunteer():
     do_volunteer(settings)
 
 
+@app.command()
+def book():
+    """
+    Book Command - Books a code clinic session
+    """
+    storage_path = overall_checks()
+    settings = load_json_file(f"{storage_path}settings.json")
+    # do_book(settings)
+
+
 def start_typer():
     """Starts the app"""
     app()
