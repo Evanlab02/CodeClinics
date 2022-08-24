@@ -31,3 +31,18 @@ def get_selected_slot(slots):
     ]
     selected_slot = inquirer.prompt(volunteer_slots)["Volunteer Slots"]
     return selected_slot
+
+
+def get_selected_event(events: list):
+    """
+    Gets the selected event from the user.
+    """
+    event_list = [f"{event['id']} - {event['summary']}" for event in events]
+    event_slots = [
+    inquirer.List('Events',
+                message="What event do you wish to attend?",
+                choices=event_list,
+            ),
+    ]
+    selected_event = inquirer.prompt(event_slots)["Events"]
+    return selected_event

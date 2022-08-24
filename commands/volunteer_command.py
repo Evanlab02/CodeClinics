@@ -5,19 +5,17 @@ Module containing functions to create events for volunteering and add them to th
 from datetime import datetime
 
 from google_calendar_API.date_helper import (
-    get_dates,
     get_rounded_time,
     generate_slots_template,
     populate_template,
     generate_available_slots,
     generate_new_event_start_and_finish_time
 )
-from google_calendar_API.connection_helper import create_api_connection
-from google_calendar_API.download_helper import download_multi_events
-from google_calendar_API.token_helper import load_token, validate_token
 from google_calendar_API.event_helper import create_volunteering_event
 
 from input_helpers.inquirer_helper import get_selected_day, get_selected_slot
+
+from commands.command_helper import create_connection, get_events
 
 from storage.calendar_saving import save_events
 
@@ -52,26 +50,3 @@ def do_volunteer(settings: dict):
     create_volunteering_event(connection, event_data)
     events = get_events(connection, calendar_id)
     save_events(storage_path, events)
-
-
-def create_connection(settings: dict):
-    """
-    Creates a connection to the calendar.
-    """
-    storage_path = settings['STORAGE PATH']
-    permission = settings['PERMISSIONS']
-
-    creds = load_token(storage_path, permission)
-    validate_token(creds)
-    connection = create_api_connection(creds)
-    return connection
-
-
-def get_events(connection, calendar_id: str):
-    """
-    Gets events from the calendar.
-    """
-    dates = get_dates()
-
-    events = download_multi_events(connection, dates, calendar_id)
-    return events

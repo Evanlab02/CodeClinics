@@ -42,3 +42,29 @@ def create_volunteering_event(connection, event_data: dict):
     except HttpError as error:
         neat_print("[bold red]Event Creation Failed[/bold red]")
         neat_print(f"[red]Unexpected Error: {error}[/red]")
+
+
+def attend_event(connection, calendar_id: str, event: dict):
+    """
+    Creates a volunteering event based on the event data.
+    """
+    user_email = input("Enter your email: ")
+    user_name = input("Enter your full name and surname: ")
+    event["attendees"].append({
+        "email": user_email,
+        "displayName": user_name,
+        "organizer": False
+    })
+
+    try:
+        event_result = connection.events().update(calendarId=calendar_id, eventId=event["id"],
+            body=event
+        ).execute()
+
+        neat_print("[green]Updated Event[/green]")
+        neat_print(f"[green]Event: {event_result['summary']}[/green]")
+        neat_print("\n[bold green]Please be respectful of others time"\
+        +" and be on time for this Code Clinic.[/bold green]")
+    except HttpError as error:
+        neat_print("[bold red]Event Creation Failed[/bold red]")
+        neat_print(f"[red]Unexpected Error: {error}[/red]")

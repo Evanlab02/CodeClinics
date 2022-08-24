@@ -15,6 +15,7 @@ from commands.login_command import do_login
 from commands.logout_command import do_logout
 from commands.calendar_command import do_calendar
 from commands.volunteer_command import do_volunteer
+from commands.book_command import do_booking
 
 from installation.describe_install import describe_install
 
@@ -90,6 +91,16 @@ def volunteer():
     storage_path = overall_checks()
     settings = load_json_file(f"{storage_path}settings.json")
     do_volunteer(settings)
+
+
+@app.command()
+def book():
+    """
+    Book Command - Books a code clinic session
+    """
+    storage_path = overall_checks()
+    settings = load_json_file(f"{storage_path}settings.json")
+    do_booking(settings)
 
 
 def start_typer():
