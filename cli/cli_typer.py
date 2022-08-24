@@ -114,6 +114,7 @@ def cancel(
     """
     storage_path = overall_checks()
     settings = load_json_file(f"{storage_path}settings.json")
+
     if member_type.lower() == "volunteer":
         cancel_volunteer_slot(settings)
     elif member_type.lower() == "student":

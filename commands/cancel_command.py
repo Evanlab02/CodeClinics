@@ -17,6 +17,7 @@ from input_helpers.inquirer_helper import get_selected_event
 
 from google_calendar_API.event_helper import delete_event, remove_attendance_from_event
 
+
 from storage.calendar_saving import save_events
 
 def cancel_volunteer_slot(settings: dict):
