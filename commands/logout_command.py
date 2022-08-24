@@ -4,7 +4,6 @@ Houses all logic to logout the user
 
 # From Import Statements
 from output.rich_output import neat_print
-from file_helpers.json_helper import overwrite_json_file
 from google_calendar_API.token_helper import remove_token
 
 
