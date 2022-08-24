@@ -81,10 +81,9 @@ class MyTestCase(unittest.TestCase):
         save_csv_events("testing/unittests/resources/", events)
         csv_list = read_csv_file("testing/unittests/resources/events.csv")
         expected_list = {
-            "headers": ["ID","Title","Date","Start Time","End Time","Description","Meets Link"],
+            "headers": ["Title","Date","Start Time","End Time","Description","Meets Link"],
             "rows": [
                 [
-                    "1",
                     "Event 1",
                     "2022-08-19",
                     "13:00:00",
@@ -98,7 +97,7 @@ class MyTestCase(unittest.TestCase):
         save_csv_events("testing/unittests/resources/", [])
         csv_list = read_csv_file("testing/unittests/resources/events.csv")
         expected_list = {
-            "headers": ["ID","Title","Date","Start Time","End Time","Description","Meets Link"],
+            "headers": ["Title","Date","Start Time","End Time","Description","Meets Link"],
             "rows": []
         }
         self.assertEqual(csv_list, expected_list)
@@ -130,10 +129,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(load_json_file("testing/unittests/resources/events.json"), events)
         csv_list = read_csv_file("testing/unittests/resources/events.csv")
         expected_list = {
-            "headers": ["ID","Title","Date","Start Time","End Time","Description","Meets Link"],
+            "headers": ["Title","Date","Start Time","End Time","Description","Meets Link"],
             "rows": [
                 [
-                    "1",
                     "Event 1",
                     "2022-08-19",
                     "13:00:00",
@@ -151,7 +149,7 @@ class MyTestCase(unittest.TestCase):
 
         csv_list = read_csv_file("testing/unittests/resources/events.csv")
         expected_list = {
-            "headers": ["ID","Title","Date","Start Time","End Time","Description","Meets Link"],
+            "headers": ["Title","Date","Start Time","End Time","Description","Meets Link"],
             "rows": []
         }
         self.assertEqual(csv_list, expected_list)
