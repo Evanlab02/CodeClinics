@@ -36,7 +36,7 @@ def calendar_print(events: list, starting_time="NA"):
     header_style = "bold magenta"
     header_enabled = True
     footer_enabled = False
-    columns = ["ID", "Title", "Date", "Start Time", "End Time", "Description", "Hangout Link"]
+    columns = ["Title", "Date", "Start Time", "End Time", "Description", "Hangout Link"]
     rows = []
 
     for event in events:
@@ -49,20 +49,18 @@ def calendar_print(events: list, starting_time="NA"):
     for column in columns:
         table.add_column(column)
 
-    table.columns[0].header_style = "bold blue"
-    table.columns[0].style = "blue"
-    table.columns[1].header_style = "bold magenta"
-    table.columns[1].style = "magenta"
+    table.columns[0].header_style = "bold magenta"
+    table.columns[0].style = "magenta"
+    table.columns[1].header_style = "bold cyan"
+    table.columns[1].style = "cyan"
     table.columns[2].header_style = "bold cyan"
     table.columns[2].style = "cyan"
     table.columns[3].header_style = "bold cyan"
     table.columns[3].style = "cyan"
-    table.columns[4].header_style = "bold cyan"
-    table.columns[4].style = "cyan"
-    table.columns[5].header_style = "bold yellow"
-    table.columns[5].style = "yellow"
-    table.columns[6].header_style = "bold green"
-    table.columns[6].style = "green"
+    table.columns[4].header_style = "bold yellow"
+    table.columns[4].style = "yellow"
+    table.columns[5].header_style = "bold green"
+    table.columns[5].style = "green"
 
     if starting_time != "NA":
         query_time = datetime.now()-starting_time
