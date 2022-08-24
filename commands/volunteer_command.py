@@ -15,7 +15,7 @@ from google_calendar_API.event_helper import create_volunteering_event
 
 from input_helpers.inquirer_helper import get_selected_day, get_selected_slot
 
-from commands.command_helper import create_connection, get_events
+from commands.command_helper import create_connection, get_events, get_all_events
 
 from storage.calendar_saving import save_events
 
@@ -48,5 +48,5 @@ def do_volunteer(settings: dict):
     }
 
     create_volunteering_event(connection, event_data)
-    events = get_events(connection, calendar_id)
+    events = get_all_events(connection, calendar_id)
     save_events(storage_path, events)

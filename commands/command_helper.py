@@ -4,7 +4,7 @@ Houses functions that are commonly used accross the commands package.
 
 from google_calendar_API.date_helper import get_dates
 from google_calendar_API.connection_helper import create_api_connection
-from google_calendar_API.download_helper import download_events
+from google_calendar_API.download_helper import download_events, download_multi_events
 from google_calendar_API.token_helper import load_token, validate_token
 
 
@@ -51,3 +51,12 @@ def filter_events_to_open_events_only(events: list):
         if not len(event['attendees']) > 1:
             open_events.append(event)
     return open_events
+
+
+def get_all_events(connection, calendar_id: str):
+    """
+    Gets all events from the calendar.
+    """
+    dates = get_dates()
+    events = download_multi_events(connection, dates, calendar_id)
+    return events
