@@ -72,6 +72,33 @@ def attend_event(connection, calendar_id: str, event: dict):
         neat_print(f"[red]Unexpected Error: {error}[/red]")
 
 
+
+def remove_attendance_from_event(
+    connection,
+    calendar_id: str,
+    event: dict,
+    user_email: str
+    ):
+    """
+    Removes an attendance from an event.
+    """
+    attendee = event["attendees"][1]
+
+    if attendee["email"] == user_email:
+        event["attendees"].pop(1)
+
+    try:
+        connection.events().update(calendarId=calendar_id, eventId=event["id"],
+            body=event
+        ).execute()
+
+        neat_print("[green]Updated Event[/green]")
+    except HttpError as error:
+        neat_print("[bold red]Event Creation Failed[/bold red]")
+        neat_print(f"[red]Unexpected Error: {error}[/red]")
+
+
+
 def delete_event(connection, calendar_id: str, event_id: str):
     """
     Deletes an event.

@@ -16,7 +16,7 @@ from commands.logout_command import do_logout
 from commands.calendar_command import do_calendar
 from commands.volunteer_command import do_volunteer
 from commands.book_command import do_booking
-from commands.cancel_command import cancel_volunteer_slot
+from commands.cancel_command import cancel_volunteer_slot, cancel_student_slot
 
 from installation.describe_install import describe_install
 
@@ -114,8 +114,11 @@ def cancel(
     """
     storage_path = overall_checks()
     settings = load_json_file(f"{storage_path}settings.json")
-    if member_type.lower() == "volunteering":
+
+    if member_type.lower() == "volunteer":
         cancel_volunteer_slot(settings)
+    elif member_type.lower() == "student":
+        cancel_student_slot(settings)
     else:
         print("Invalid member type")
 

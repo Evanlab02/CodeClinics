@@ -53,6 +53,17 @@ def filter_events_to_open_events_only(events: list):
     return open_events
 
 
+def filter_events_to_full_events_only(events: list):
+    """
+    Filters the events to only open events.
+    """
+    open_events = []
+    for event in events:
+        if len(event['attendees']) == 2:
+            open_events.append(event)
+    return open_events
+
+
 def get_all_events(connection, calendar_id: str):
     """
     Gets all events from the calendar.
