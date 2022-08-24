@@ -50,11 +50,13 @@ def attend_event(connection, calendar_id: str, event: dict):
     """
     user_email = input("Enter your email: ")
     user_name = input("Enter your full name and surname: ")
+    description = input("Please explain what you are struggling with: ")
     event["attendees"].append({
         "email": user_email,
         "displayName": user_name,
         "organizer": False
     })
+    event["description"] = description
 
     try:
         event_result = connection.events().update(calendarId=calendar_id, eventId=event["id"],
