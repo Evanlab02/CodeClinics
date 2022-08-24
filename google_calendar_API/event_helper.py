@@ -15,6 +15,8 @@ def create_volunteering_event(connection, event_data: dict):
     selected_slot = event_data["selected slot"]
     start_time = event_data["start time"]
     end_time = event_data["end time"]
+    user_email = input("Enter your email: ")
+    user_name = input("Enter your full name and surname: ")
 
     try:
         event_result = connection.events().insert(calendarId=calendar_id,
@@ -23,6 +25,13 @@ def create_volunteering_event(connection, event_data: dict):
             "description": 'STUDENT MUST SPECIFY WHAT THEY ARE STRUGGLING WITH',
             "start": {"dateTime": start_time},
             "end": {"dateTime": end_time},
+            "attendees": [
+                {
+                    "email": user_email,
+                    "displayName": user_name,
+                    "organizer": True
+                }
+            ]
             }
         ).execute()
 
