@@ -5,6 +5,7 @@ import sys
 
 from commands.command_helper import (
     create_connection,
+    get_all_events,
     get_events,
     filter_events_to_open_events_only,
     filter_events_based_on_email
@@ -14,11 +15,14 @@ from input_helpers.inquirer_helper import get_selected_event
 
 from google_calendar_API.event_helper import delete_event
 
+from storage.calendar_saving import save_events
+
 def cancel_volunteer_slot(settings: dict):
     """
     Cancel Volunteer Slot - Cancels a volunteer slot
     """
     calendar_id = settings['CALENDAR ID']
+    storage_path = settings["STORAGE PATH"]
     connection = create_connection(settings)
     events = get_events(connection, calendar_id)
     events = filter_events_to_open_events_only(events)
@@ -36,3 +40,5 @@ def cancel_volunteer_slot(settings: dict):
     )
     selected_id = selected_event_formatted.split(" - ")[0]
     delete_event(connection, calendar_id, selected_id)
+    events = get_all_events(connection, calendar_id)
+    save_events(storage_path, events)
