@@ -1,7 +1,7 @@
 """
 Module containing helper functions to get input from the user using inquirer.
 """
-import sys
+
 import inquirer
 
 def get_selected_day(slots):
@@ -37,10 +37,6 @@ def get_selected_event(events: list):
     """
     Gets the selected event from the user.
     """
-    if len(events) == 0:
-        print("No events to select from.")
-        sys.exit(0)
-
     event_list = [f"{event['id']} - {event['summary']}" for event in events]
     event_slots = [
     inquirer.List('Events',
