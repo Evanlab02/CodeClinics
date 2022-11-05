@@ -74,7 +74,7 @@ This program uses the google calendar API and this unfortunately means for any u
 
 When you have created this project you also need to create an client secret and download the client secret - rename it to 'credentials.json' - and store it in the storage directory. 
 
-You can then proceed to create a central calendar that will be used to store all the events in a middle point and go to its settings and find the calendar ID, copy this ID and keep it somewhere for when you install code_clinics. This step I will not include screenshots for and this will be up to you to solve.
+You can then proceed to create a central calendar that will be used to store all the events in a middle point and go to its settings and find the calendar ID, copy this ID and keep it somewhere for when you install code_clinics.
 
 <h2>3. Use the help command</h2>
 
