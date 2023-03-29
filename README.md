@@ -1,5 +1,6 @@
 <h1>CodeClinics</h1>
 <strong>NOTE: This project is no longer being maintained</strong>
+<br>
 <strong>NOTE: CodeClinics is intended to run on Linux (Works best on Ubuntu)</strong>
 <h2>1. Installing CodeClinics</h2>
 <p>There are 2 ways to get CodeClinics on your computer, the first method is suggested if you do not intend to change the program at all, the second method being if you want edit the source code to suit your needs better.</p>
